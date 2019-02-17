@@ -37,6 +37,8 @@ concurrent queue shared throughout the operating system. including the backgroun
 ## Custom Queue(serial or concurrent queue)
 custom queues are mapped into global queues by specifying a QoS
 
+
+---
 # Networking in Swift
 
 *Always use a background queue to perform network operations. Network requests usually take a long time to complete. If it were to be called on the main thread/queue, all other operations or tasks would have to wait until the network operation completes. Leading the app to become unresponsive.*
