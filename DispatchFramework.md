@@ -1,6 +1,5 @@
 
-# Grand Central Dispatch
-## GCD or Dispatch
+# Grand Central Dispatch *GCD or Dispatch*
 
 *GCD organizes tasks into specific queues, and later on the tasks on the queues will get executed in a proper and available thread from the pool. The dispatch framework is a very fast and efficient concurrency framework*
 
@@ -25,15 +24,15 @@ With dispatch queues, you can execute your code synchronously or asynchronously.
 > On every dispatch queue, tasks will be executed in the same order as you add them to the queue (FIFO) the first task in the line will be executed first but 
 > the task completion is not guaranteed. task completion is up to the code complexity. not order.
 
-# Serial and Concurrent queues
+## Serial and Concurrent queues
 there are two types of dispatch queues: serial queues executes tasks one at a time. comcurrent tasks, execute tasks in parallell(same time)
 
 
-# Main Queue (serial queue)
+## Main Queue (serial queue)
 every task on the main queue runs on the main thread.
 
-# Global Queue (concurrent queue)
+## Global Queue (concurrent queue)
 concurrent queue shared throughout the operating system. including the background queue
 
-# Custom Queue(serial or concurrent queue)
+## Custom Queue(serial or concurrent queue)
 custom queues are mapped into global queues by specifying a QoS
