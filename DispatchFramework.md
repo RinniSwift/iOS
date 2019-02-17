@@ -8,7 +8,7 @@ code executed by a CPU core is a thread. So your app is going to have many threa
 In the past a processor had one single core which means it can only deal wiht one task at a time.
 Time-slicing was introduced so CPU's can run tasks concurrently(at the same time) using context-switching
 As processors gained more core, they were capabale of multi-tasking using parallelism
-Now, CPU's use hyperthreading.
+Now, CPU's use hyperthreading (divides CPU clock cycles between different programs to run more than one program at a time)
 
 ## Synchronous and Asynchronous execution
 Each work item can be executed either synchronously or asynchronously. 
@@ -36,3 +36,47 @@ concurrent queue shared throughout the operating system. including the backgroun
 
 ## Custom Queue(serial or concurrent queue)
 custom queues are mapped into global queues by specifying a QoS
+
+# Networking in Swift
+
+*Always use a background queue to perform network operations. Network requests usually take a long time to complete. If it were to be called on the main thread/queue, all other operations or tasks would have to wait until the network operation completes. Leading the app to become unresponsive.*
+*Always call network operations on the background queue by using GCD. Return back to the main queue once recieved results since all interactions and visual displays occur in the main thread.*
+
+## URL, URLRequests, URLSessions, and URLSessionTask
+
+###### URL
+> URL class represents a local or remote URI.
+```swift
+var url = URL(string: "https://apple.com")
+```
+
+###### URLRequest
+> URLRequest represents a proper request for a URL
+```swift
+var request = URLRequest(url: url!)
+request.httpMethod = "GET"
+```
+
+###### URLSession
+> URLSession is a class that allows to perform a URLRequest. Most of the time we use a singleton instance called "shared" if we don't need any special configuration. Other than that, we can create URLSessionConfigurations which contain these most common instances: default, ephumeral, and background.
+```swift
+var session = URLSession.shared
+var sessionDefault = URLSession(configuration: .default)
+
+\\ downloading a webpage
+var dataTask = session.dataTask(with: url) { data, response, error in
+	...
+}
+dataTask.resume()
+```
+
+###### URLSessionTask
+> URLSessionTask is a class that performs the actual transfer of data. The most common session task is URLSessionDataTask(retrieves the contents of the url as a Data object) !The URLSession class instantiates the task itself under the hood. Also remember to resume all tasks with the resume() method or the task wont start.
+```swift
+var url = URL(string: "https://apple.com")
+```
+
+
+
+
+
