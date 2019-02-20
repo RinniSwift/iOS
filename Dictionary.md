@@ -11,6 +11,7 @@ hash tables are basically arrays which are initially empty. To store data in a h
 hash functions return hash values of a data passed in but how it works under the hood:
 The function sums up the *unicode scalar* representation for each character in the word and also uses the SipHash algorithm. And that is simply the hash value.
 
+---
 ###### Where next?
 Once keys are passed in the hash function, we mod that abs(hashvalue) by number of items in the array and that will simply return an indice of which the value will be stored.
 
