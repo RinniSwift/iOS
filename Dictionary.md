@@ -20,6 +20,6 @@ Once keys are passed in the hash function, we mod that abs(hashvalue) by number 
 That is called a collision. To avoid collisions, we simply use the chaining. where each array element contains a list with zero or more key-value pairs as a linked list. The array elements are called **buckets** and the lists are called **chains** 
 
 
-###### *resources*
+## *resources*
 - [raywenderlich hash tables](https://www.raywenderlich.com/206-swift-algorithm-club-hash-tables)
 - [building a hash data structure in swift](https://medium.com/journey-of-one-thousand-apps/building-a-hash-data-structure-in-swift-e9b2733d9e20)
