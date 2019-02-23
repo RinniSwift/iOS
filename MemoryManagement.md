@@ -1,5 +1,6 @@
 # Memory Management
 
+---
 ## Memory Management in Swift
 Memory management plays a big role in allocating memory so that the program can perform at the request of the user and could be allocated or freed for reuse when no longer needed. *ARC* helps with managing and storing data
 
