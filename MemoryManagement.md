@@ -61,3 +61,4 @@ In multi-threaded situations, each thread has their own stack, but heap is appli
 ###### *resources*
 - [memory management in swift](https://www.appcoda.com/memory-management-swift/)
 - [memory leaks in swift](https://medium.com/flawless-app-stories/memory-leaks-in-swift-bfd5f95f3a74)
+- [understanding memory leaks in closures](https://medium.com/@stremsdoerfer/understanding-memory-leaks-in-closures-48207214cba)
