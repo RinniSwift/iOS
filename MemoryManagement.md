@@ -9,8 +9,8 @@ Automatic Reference Counting helps with storing references into memory and helps
 Reference counting only applies on instances of a class.\
 Each time you create a class instance, ARC automatically creates some memory to store the information. but with the deinit() method, ARC will free the memory space of that instance. ARC relates to variables with references of *strong*, *weak*, or *unknowned*\
 **Strong**: all variables are strong by default and can be changed by declaring weak or unknowned
-**Weak**: with the property of weak, it will not increment the reference count. These references are always declared as optionals because the variable can be set to nil. With ARC, it automatically sets the weak reference to nil once the instance is deallocated.
-**Unknowned**: these references similar to weak references but must always hold a value. Only create unknowned references when you are sure that the reference always refers to an instance that has not been deallocated. 
+**Weak**: [weak references between objects with indipendant lifetime] with the property of weak, it will not increment the reference count. These references are always declared as optionals because the variable can be set to nil. With ARC, it automatically sets the weak reference to nil once the instance is deallocated.
+**Unknowned**: [unknowned references between objects of the same lifetime] these references similar to weak references but must always hold a value. When the objects will be reached at the same time and dealloced at the same time.
 
 ### Memory Leaks
 A memory leak is a portion of memory that is occupied forever and never used again. or. Memory that was alloced at some point but was never released and is no longer referenced by the app. The main reason for memory leaks are caused by retain cycles.
