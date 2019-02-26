@@ -13,7 +13,7 @@ Each time you create a class instance, ARC automatically creates some memory to 
 **Unknowned**: these references similar to weak references but must always hold a value. Only create unknowned references when you are sure that the reference always refers to an instance that has not been deallocated. 
 
 ### Memory Leaks
-A memory leak is a portion of memory that is occupied forever and never used again. or. Memory that was allocated at some point but was never released and is no longer referenced by the app. The main reason for memory leaks are caused by retain cycles.
+A memory leak is a portion of memory that is occupied forever and never used again. or. Memory that was alloced at some point but was never released and is no longer referenced by the app. The main reason for memory leaks are caused by retain cycles.
 
 #### Retain Cycles
 When an object has a strong reference to another object, it is retaining it. objects in this case are reference types (classes) It is not possible to create retain cycles on value types. When an object references a second one, it owns it. the second object willl stay alive until you declare it nil.\
@@ -22,12 +22,18 @@ When object A retains object B and object B retains object A, there is a retain 
 When to use weak or unknowned: define a capture in a closure as unknowned when the closure and the instance it captures will always refer to each other and always be deallocated at the same time. Define a closure to be weak when the captured reference may become nil at any point in time.
 
 ###### what's dangerous about leaks?
-- increased memory footprint of the app.\
+- Increased memory footprint of the app.\
 Direct consequence of objects not being released. As the actions that create those objects are repeated, the occupied memory will grow. Leads to mempory warning and then crashes.
-- introduces unwanted side effects.\
+- Introduces unwanted side effects.\
 Imagine an object that starts listening to a notification when it is created in the *init*, to stop the listening of the notification, it has to be balanced by using the *deinit*. But, if the object leaks, it will never die and it will never stop listening to the notification.
-- crashes\
+- Crashes\
 Multiple leaked objects altering the database, UI, entire state of the app, causes crashes\
+
+### Debugging Memory leaks
+- using the memory debugger tool in Xcode. This tool is for checking what contains in memory. Memory leaks will be indicated with exclamation marks on the right of the object.
+- knowing what object owns the closure or other object:\
+e.g.1 dealing with custom cells in UITableView: When you create an action closure in the custom cell which will be called when the button is tapped: The cycle goes like this; the action closre belongs to the cell but the cell belongs on the tableView which the tableView belongs to the tableViewController\
+e.g.2 dealing with grand central dispatch. The view controller doesnt have any reference to it since the dispatchQueue is a singleton so worst case the singleton keeps a reference to the closure. In most cases when closures are executed, it will drop its reference to self since self doesnt have a reference to the closure, there will be no cycle. If there is a cycle, use *unknowned* if the closure cannot exist longer than the object it captures.
 
 
 
