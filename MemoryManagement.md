@@ -12,6 +12,29 @@ Each time you create a class instance, ARC automatically creates some memory to 
 **Weak**: with the property of weak, it will not increment the reference count. These references are always declared as optionals because the variable can be set to nil. With ARC, it automatically sets the weak reference to nil once the instance is deallocated.
 **Unknowned**: these references similar to weak references but must always hold a value. Only create unknowned references when you are sure that the reference always refers to an instance that has not been deallocated. 
 
+### Memory Leaks
+A memory leak is a portion of memory that is occupied forever and never used again. or. Memory that was allocated at some point but was never released and is no longer referenced by the app. The main reason for memory leaks are caused by retain cycles.
+
+#### Retain Cycles
+When an object has a strong reference to another object, it is retaining it. objects in this case are reference types (classes) It is not possible to create retain cycles on value types. When an object references a second one, it owns it. the second object willl stay alive until you declare it nil.\
+When object A retains object B and object B retains object A, there is a retain cycle. When two objects hold strong reference to each other, they cannot be dealloced. Retain cycles are broken when one of the references in the cycle is declared *weak* or *unknowned*. 
+> Weak or unknowned references allow one instance in a reference cycle to refer to the other reference without keeping a strong hold on it.
+When to use weak or unknowned: define a capture in a closure as unknowned when the closure and the instance it captures will always refer to each other and always be deallocated at the same time. Define a closure to be weak when the captured reference may become nil at any point in time.
+
+###### what's dangerous about leaks?
+- increased memory footprint of the app.\
+Direct consequence of objects not being released. As the actions that create those objects are repeated, the occupied memory will grow. Leads to mempory warning and then crashes.
+- introduces unwanted side effects.\
+Imagine an object that starts listening to a notification when it is created in the *init*, to stop the listening of the notification, it has to be balanced by using the *deinit*. But, if the object leaks, it will never die and it will never stop listening to the notification.
+- crashes\
+Multiple leaked objects altering the database, UI, entire state of the app, causes crashes\
+
+
+
+## Reference Types
+
+## Value Types
+When capturing or storing value types, values are copied rather than referenced, they cannot create retain cycles since value types dont use reference counting although values can hold references to other objects. 
 
 
 #### What happens when you exaust the memory? 
@@ -31,3 +54,4 @@ In multi-threaded situations, each thread has their own stack, but heap is appli
 
 ###### *resources*
 - [memory management in swift](https://www.appcoda.com/memory-management-swift/)
+- [memory leaks in swift](https://medium.com/flawless-app-stories/memory-leaks-in-swift-bfd5f95f3a74)
