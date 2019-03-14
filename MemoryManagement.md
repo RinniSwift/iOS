@@ -30,18 +30,10 @@ Imagine an object that starts listening to a notification when it is created in 
 Multiple leaked objects altering the database, UI, entire state of the app, causes crashes\
 
 ### Debugging Memory leaks
-- using the memory debugger tool in Xcode. This tool is for checking what contains in memory. Memory leaks will be indicated with exclamation marks on the right of the object.
+- using the debug navigator tool in Xcode. This tool is for checking what contains in memory. Memory leaks will be indicated with exclamation marks on the right of the object.
 - knowing what object owns the closure or other object:\
 e.g.1 dealing with custom cells in UITableView: When you create an action closure in the custom cell which will be called when the button is tapped: The cycle goes like this; the action closre belongs to the cell but the cell belongs on the tableView which the tableView belongs to the tableViewController\
 e.g.2 dealing with grand central dispatch. The view controller doesnt have any reference to it since the dispatchQueue is a singleton so worst case the singleton keeps a reference to the closure. In most cases when closures are executed, it will drop its reference to self since self doesnt have a reference to the closure, there will be no cycle. If there is a cycle, use *unknowned* if the closure cannot exist longer than the object it captures.
-
-
-
-## Reference Types
-
-## Value Types
-When capturing or storing value types, values are copied rather than referenced, they cannot create retain cycles since value types dont use reference counting although values can hold references to other objects. 
-
 
 #### What happens when you exaust the memory? 
 - The task will stop performing. 
