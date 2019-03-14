@@ -2,7 +2,7 @@
 
 
 ## Reference Types
-*Classes*
+##### *Classes*
 When instances share the same copy of the data it creates a shared instance.
 > - Use reference types when comparing instance identity with '==='. When you care about everything being identical down to its memory address.
 > - Use reference types when you want to create a shared state. When you want to create a single instance that can be accessed and mutated in multiple parts of the app. When you want everything holding that instance to stay in sync.
@@ -13,7 +13,7 @@ When instances share the same copy of the data it creates a shared instance.
 
 
 ## Value Types
-*Structs, enums, tuples, arrays, strings, dictionaries*
+##### *Structs, enums, tuples, arrays, strings, dictionaries*
 When instances keep a unique copy of the data.
 When capturing or storing value types, values are copied rather than referenced, they cannot create retain cycles since value types don't use reference counting although values can hold references to other objects. 
 > - Use value types when comparing instance data with '=='. When you care about comparing the internal values over where the value is stored in memory.
