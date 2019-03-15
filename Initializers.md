@@ -73,3 +73,29 @@ struct Human3 {
 }
 let human3 = Human3()
 ```
+\
+All of a classes properties--including that of any in the super class it inherits from--must be set during initialization. What if we want it to be optional where you can assign a value or not in the parameters? This is where *convenience initializers* come in handy.\
+**Convenience initializers** are supporting an initializer for a class.You can design convenience inits to call a *designated initializer* by calling self.init. A convenience init must call another init within the same class, must ultimately call another designated initializer.\
+**Designated Initializers** are primary initializers which fully initializes all properties in the class.
+```swift
+struct Human {
+	var name: String
+
+	init(name: String) {	// designated init
+		self.name = name
+	}
+
+	convenience init() {	// convenience init
+		self.init(name: "not set")
+	}
+}
+
+let desHuman = Human(name: "Rinni")	// calls designated init. name = "Rinni"
+let conHuman = Human() 				// calls convenience init. name = "not set"
+```
+Above you can see that we designed the convenience init to call the designated init.
+
+
+---
+###### *resources*
+- [Inializers in swift](https://medium.com/@abhimuralidharan/initializers-in-swift-part-1-intro-convenience-and-designated-intializers-9adf5632fb52)
