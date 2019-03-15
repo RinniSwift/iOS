@@ -18,7 +18,6 @@ struct Human {
 	}
 }
 ```
-\
 Above we are assigning some value to the variable gender at the time of initialization. If you do't want to use the init method:
 ```Swift
 struct Human {
@@ -29,4 +28,48 @@ struct Human {
 	var gender: Gender?	// declaring variable as optional
 }
 ```
+\
+Different ways to implement initializers are: 
+1. *Customizing initialization*
+2. *Initializer parameters without argument labels*
+3. *Default initializers*
+```Swift
+// 1. The swift compile will decide which to call based on the argument label
+struct Human1 {
+	var gender: Gender
+	var age: Int = 10
 
+	init(age: Int) {
+		self.age = age
+	}
+
+	init(gender: Gender) {
+		self.gender = gender
+	}
+
+	init(gender: Gender, age: Int) {
+		self.gender = gender
+		self.age = age
+	}
+}
+let human1 = Human1(gender: .female, age: 19)
+
+// 2. nameless initializers
+struct Human2 {
+	var gender: Gender
+	var age: Int
+
+	init(_ gender: Gender, _ age: Int) {
+		self.gender = gender
+		self.age = age
+	}
+}
+let human2 = Human2(.female, 19)
+
+// 3. default initializer
+struct Human3 {
+	var gender: Gender = .female
+	var age: Int = 19
+}
+let human3 = Human3()
+```
