@@ -24,7 +24,7 @@ When capturing or storing value types, values are copied rather than referenced,
 > value types' declared as constants mean that the instance must remain constant no properties of the instance will ever change.
 
 
-
+---
 ###### *resources*
 - [Value and Reference type in swift](https://developer.apple.com/swift/blog/?id=10)
 - [Reference vs. Value types in swift](https://www.raywenderlich.com/9481-reference-vs-value-types-in-swift)
