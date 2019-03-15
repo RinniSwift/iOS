@@ -14,7 +14,7 @@ struct Human {
 	var gender: Gender	// stored property
 
 	init(gender: Gender) {
-		self.gender = gender
+		self.gender = gender	// stored property being set by the time of initialization
 	}
 }
 ```
@@ -47,7 +47,7 @@ struct Human1 {
 		self.gender = gender
 	}
 
-	init(gender: Gender, age: Int) {
+	init(gender: Gender, age: Int) {	// this will be called when instantiating human1
 		self.gender = gender
 		self.age = age
 	}
