@@ -91,7 +91,7 @@ struct Human {
 }
 
 let desHuman = Human(name: "Rinni")	// calls designated init. name = "Rinni"
-let conHuman = Human() 				// calls convenience init. name = "not set"
+let conHuman = Human() 			// calls convenience init. name = "not set"
 ```
 Above you can see that we designed the convenience init to call the designated init.
 
