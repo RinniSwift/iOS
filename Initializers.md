@@ -93,9 +93,40 @@ struct Human {
 let desHuman = Human(name: "Rinni")	// calls designated init. name = "Rinni"
 let conHuman = Human() 			// calls convenience init. name = "not set"
 ```
-Above you can see that we designed the convenience init to call the designated init.
+Above you can see that we designed the convenience init to call the designated init.\
+\
+
+**Initializer Inheritance**\
+how to use initializers with subclasses
+```swift
+class Human {
+	var age: Int
+
+	init(age: Int) {
+		self.age = age
+	}
+
+	convenience init() {
+		self.init(age: 0)
+	}
+}
+
+class Man: Human {
+	var name: String
+
+	override init(age: Int) {
+		super.init(age: age)
+	}
+
+	init(name: String, age: Int) {
+		super.init(age: age)
+		self.name = name
+		self.age = age
+	}
+}
+```
 
 
 ---
 ###### *resources*
-- [Inializers in swift](https://medium.com/@abhimuralidharan/initializers-in-swift-part-1-intro-convenience-and-designated-intializers-9adf5632fb52)
+- [Medium - Iniatializers in swift](https://medium.com/@abhimuralidharan/initializers-in-swift-part-1-intro-convenience-and-designated-intializers-9adf5632fb52)
