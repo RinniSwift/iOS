@@ -41,7 +41,7 @@ custom queues are mapped into global queues by specifying a QoS
 ---
 # Networking in Swift
 
-*Always use a background queue to perform network operations. Network requests usually take a long time to complete. If it were to be called on the main thread/queue, all other operations or tasks would have to wait until the network operation completes. Leading the app to become unresponsive.*
+*All network sessions use a background queue to perform network operations. Network requests usually take a long time to complete. If it were to be called on the main thread/queue, all other operations or tasks would have to wait until the network operation completes. Leading the app to become unresponsive.*
 *Always call network operations on the background queue by using GCD. Return back to the main queue once recieved results since all interactions and visual displays occur in the main thread.*
 
 ## URL, URLRequests, URLSessions, and URLSessionTask
@@ -79,6 +79,18 @@ var url = URL(string: "https://apple.com")
 ```
 
 
+# Semaphores
+Semaphores acts as the decision maker about what shared resource gets displayed on the thread indicating with the wait() and signal() function. They consist of threads queue and counter value.
+- *Threads Queue*: Used by the semaphore to keep track of what has acces to the shared resource first. This is in FIFO order. (First thread entered will be the first to get access to the shared resource once avaiable)
+- *Counter Value*: used by the semaphore to decide if a thread should get access to the shared resource or not. This value changes when called *signal()* or *wait()* functions.\
+\
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Call *wait()* before using the shared resource. To ask if the shared resource is available or not. should not be called on the main thread since it will freeze the app.\
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Call *signal()* after using the resource. Signaling the semaphore that we are done interacting with it.
 
+**Thread safe**: *Code that can be safely called from multiple threads and not cause any issues.*
+
+## Semaphores and GCD
+Dispatch groups are used when you have a load of things you want to do that can happen all at once.\
+Semaphores are used when you have a resource that can be accessed by N threads at the same time. They are used mainly for multiple tasks that use the same resource.
 
 
