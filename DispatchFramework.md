@@ -93,4 +93,6 @@ Semaphores acts as the decision maker about what shared resource gets displayed 
 Dispatch groups are used when you have a load of things you want to do that can happen all at once.\
 Semaphores are used when you have a resource that can be accessed by N threads at the same time. They are used mainly for multiple tasks that use the same resource.
 
-
+### Resources
+- [A quick look at semaphores in Swift](https://medium.com/swiftly-swift/a-quick-look-at-semaphores-6b7b85233ddb)
+- [The beauty of semaphores](https://medium.com/@roykronenfeld/semaphores-in-swift-e296ea80f860)
