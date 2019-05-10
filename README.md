@@ -1,5 +1,5 @@
-# iOS Knowledge Collection
-*This is a repo that has a collection of Swift knowledge*
+# iOS Knowledge (Swift)
+*This repo contains a collection of Swift knowledge*
 
 ### Use the find command (command+f) to search for keywords you want to study and click the readme link to read more on it.
 
@@ -14,7 +14,8 @@
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*main, serial, concurrent, global, and custom queues*\
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*networking using URLSession*\
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*URLSession configurations*\
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*URLSessionTask: URLSessionDataTask*
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*URLSessionTask: URLSessionDataTask*\
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*semaphores*
 
 3. [Initializers](https://github.com/RinniSwift/iOS/blob/master/Initializers.md)\
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*stored properties*\
