@@ -28,7 +28,7 @@ Use *Reactive programming* and *KVO* to create **bindings**: they take in a sour
 
 #### Application design patterns
 1. *MVC* Common pattern in cocoa applications.
-2. *MVVM* A variant of MVC with a seperate view-model to manage the view controller hierarchy.
+2. *MVVM+C* A variant of MVC with a seperate view-model to manage the view controller hierarchy.
 ---
 1. MVC 
 The controller layer recieves all view action, handles all interaction logic, recieves all model notifications, prepares all data for presentation, and displays changes to the view.\
@@ -36,3 +36,10 @@ The controller layer recieves all view action, handles all interaction logic, re
 **Upating**: When the controller layer recieves view events(target-action, delegates), since the controller knows what kind of views it's connected to but the view has does not know the controller interface, the controller changes it's internal state, changes the model, or direct view hierarchy.\
 **Changing the view**: The controller should not change the view directly. Instead, the controller is subsribed to the models notifications and then changes the view hierarchy once the model notification arrives.\
 **Testing**: It's hard to write unit tests since view controllers are tightly integrated with other components. Instead, we use integration testing to build sections of the view, model, and controller layers.
+
+2. MVVM+Coordinator
+This uses a *view-model* for each scene to desribe the presentation and interaction logic of the scene. Since the view-model is coupled to the scene, there is the coordinator that provides logic between scene transitions. The view controller here notifies the coordinator through delegates about view actions and the coordinator presents new view controllers and sets their model data. Other words, the view controller hierarchy is controlled by the coordinator not the view controller. The coordinator which has direct reference to the model layer.\
+**Construction**: The view controller is built up and creates the view-model upon construction. This view-model binds each view to the view controller. Unlike MVC, MVVM does not present all model object on construction but creates the model-view to handle that instead.\
+**Updating**: When there's a view action, the view or view controller doesn't directly change it's internal state. Instead, it calls a method on the view-model to change it's internal state.\
+**Changing the view**: The view-model observes the model and transforms the model notification to be communicated with the view controller. The view controller subsribes to the view-models changes, typically using binding; in this pattern, reactive programming framework.\
+**Testing**: Uses interface testing since the view-model is de-coupled from the view layer and the controller layer.
