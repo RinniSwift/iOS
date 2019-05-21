@@ -34,3 +34,8 @@
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*value types*\
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*data structures that fall into each category*\
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*mutability in reference and value types*
+
+6. [AppArchitecture](https://github.com/RinniSwift/iOS/blob/master/AppArchitecture.md)\
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*Model Layers*\
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*View Layers*\
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*Loops of an application*
