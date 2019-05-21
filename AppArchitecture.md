@@ -4,8 +4,8 @@
 - The importance of app architecture:\
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - who constructs the model and views and connects the two?\
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - how are view actions handled\
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - how is the model data applied to the view
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - how is the *view state* handled. (non model state) 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - how is the model data applied to the view\
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - how is the *view state* handled. (non model state)\
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - how events flow through layers.\
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - expectations on whether components should have _compile time_ or _run time_ references to each other.\
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - how data should be read or mutated.
