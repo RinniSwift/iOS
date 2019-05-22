@@ -75,10 +75,26 @@ If there are mainly two functionalities inside one view controller, we can split
 A mediating controller is a reusable controller object. In iOS, a protocol conformance is a good candidate for a mediating controller. Pulling out the conformances into seperate objetcs can be an effective way to make view controllers smaller. An example would be extracting the tableViewDataSource. Creating an entire class for it and then passing in the requirements and then declaring a laxy var for that class to set the delegate to that. {pg. 77}
 
 ---
+
 2. **MVVM+Coordinator**\
 This uses a *view-model* for each scene to desribe the presentation and interaction logic of the scene. Since the view-model is coupled to the scene, there is the coordinator that provides logic between scene transitions. The view controller here notifies the coordinator through delegates about view actions and the coordinator presents new view controllers and sets their model data. Other words, the view controller hierarchy is controlled by the coordinator not the view controller. The coordinator which has direct reference to the model layer.\
-**Construction**: The view controller is built up and creates the view-model upon construction. This view-model binds each view to the view controller. Unlike MVC, MVVM does not present all model object on construction but creates the model-view to handle that instead.\
+MVVM aims to improve upon MVC in a way where all model related tasks are moved out of the controller layer to the view-model layer (view-modle sit between the model and the view controller). It uses some form of binding to keep properties on one object in sync with properties on another object. These bindings will be what constructs the properties on the view-model and properties on the view. We will be using *reactive profgramming* to implement these bindings. Reactive programming here will build a data pipeline between the model and view unlike MVC where it is a single observer pattern between those.
+
+> Quick intro to reactive programming:  Reactive programming is a pattern for describing data flow between sources. It keeps the observers, the transformations, and subscribers seperate. Uses better in RxSwift (reactive programming framework) which is best use case since they come with bindings to UIKit--RxCocoa. These bindings remove a lot of code from view controllers.
+
+**Construction**: The view controller is built up and creates the view-model upon construction. This view-model binds each view to the view controller. Unlike MVC, MVVM does not present all model object on construction but creates the model-view to handle that instead. And the view-model controls the model.\
 **Updating**: When there's a view action, the view or view controller doesn't directly change it's internal state. Instead, it calls a method on the view-model to change it's internal state.\
 **Changing the view**: The view-model observes the model and transforms the model notification to be communicated with the view controller. The view controller subsribes to the view-models changes, typically using binding; in this pattern, reactive programming framework.\
-**Testing**: Uses interface testing since the view-model is de-coupled from the view layer and the controller layer.
+**Changing the model**: The view-model being the mediator between the view controller and the model. Steps in changing the model include:\
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1. A view event is triggered\
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 2. The view controller changes the view-model\
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 3. The view-model changes the model.\
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 4. The view-model observes teh model changes.\
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 4. The view controller observes the view-model and updates the views\
+**Testing**: Uses interface testing on the view-model since the view-model is de-coupled from the view layer and the controller layer.
 
+#### Integration Tests vs. Interface Tests
+View Integration tests require extensive knowledge on how view hierarchy works and the handling of view effects that happen asynchronously. (Used in MVC). Xcode UI tests are similar to integration tests.
+
+#### Discussion
+The code can be simpler if you stick to the pattern but does not mean it will be easy to implement. MVVM mitigates the massive view controller problem in MVC. Binding in MVVM also resolves in the model and view getting out of sync because binding unifies the code path of initial set up and updates.
