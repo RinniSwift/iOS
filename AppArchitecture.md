@@ -98,3 +98,10 @@ View Integration tests require extensive knowledge on how view hierarchy works a
 
 #### Discussion
 The code can be simpler if you stick to the pattern but does not mean it will be easy to implement. MVVM mitigates the massive view controller problem in MVC. Binding in MVVM also resolves in the model and view getting out of sync because binding unifies the code path of initial set up and updates.
+
+---
+
+### Networking
+How networking fits into an app. There are two ways to add networking support into our app. The first variant(*controller-owned networking*) removes the model layer and lets the view controller handle the network requests. The second variant(*model-owned networking*) retains the model of the *MVC* and adds a networking layer beneath it.
+- *Controller-owned Networking*: This version fetches data directly from the network and the data is not persisted. The data is cached in memory in the view controller as a *view state*. Which means this will only work with a network connection. This way makes it difficult to share data between view controllers since controller-owned networking is independent on its own. (**in memory cache**) Unlike *model-owned networking* where they instead observe changes in the model.
+- *Model-owned Networking*: This version retains the model layer of the *MVC* and serves as an offline cache for the data. Additionally, changes in the model are picked up from the controller using the observe pattern. An advantage to this is that all view controllers draw their data from the store and subsribe to its change notifications.
