@@ -38,4 +38,11 @@
 6. [AppArchitecture](https://github.com/RinniSwift/iOS/blob/master/AppArchitecture.md)\
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*Model Layers*\
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*View Layers*\
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*Loops of an application*
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*Loops of an application*\
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*A view state*\
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*Creating extensions, child objects, extracting object to reduce code in a view controller*\
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*RxSwift and RxCocoa*
+
+
+
+
