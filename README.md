@@ -42,7 +42,12 @@
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*A view state*\
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*Creating extensions, child objects, extracting object to reduce code in a view controller*\
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*RxSwift and RxCocoa*
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*Networking*
 
-
+7. [Intro](https://github.com/RinniSwift/iOS/blob/master/Intro.md)\
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*Swift style guide*\
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*Value and reference types*\
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*Identity*\
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*Functions*
 
 
