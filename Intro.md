@@ -33,5 +33,5 @@
 - **statically dispatched** functions are functions that are known at compile time. (e.g. functions and methods called on structs)
 - **dynamically dispatched** functions are functions the compiler doesn't necessarily know at compile time (e.g. methods on classes or protocols: *@objc* class by using selectors and objc_msgSend)
 
-##### Resources
+#### Resources
 objc Advanced Swift book by Chris Eidhof, Ole Begemann, ans Airspeed Velocity
