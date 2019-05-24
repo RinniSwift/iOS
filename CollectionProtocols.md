@@ -14,6 +14,9 @@ protocol IteratorProtocol {
 }
 ```
 
+> **Iterators and value semantics**. All iterators in the example have value semantics. This means that if there is a copy, the iterators will act independantly of each other. But *without value semantics*(reference semantics), the original and the copy don't act indipendently. The *storage of the box* is actually shared between the two iterators. Example of a reference semantic is ```AnyIterator``` it wraps the iterator in an internal box object(a class instance)
+> Mostly we create iterators implicitly more than explicitly through a for loop. 
+
 This is what a for loop does under the hood: the compiler creates a fresh iterator for the sequence and calls next on the iterator repeatedly until nil is returned which looks like:
 
 ```swift
@@ -74,8 +77,8 @@ for prefix in Prefixsequence(string: "Rinni") {
 ```
 > We have just created infinite sequences. We can also construct another function or parameter to slice off the finite piece.
 
-
 ---
+
 
 **Resource**\
 objc Advanced Swift *updated for Swift 3* book by Chris Eidhof, Ole Begemann, and Airspeed Velocity
