@@ -135,6 +135,56 @@ A collection is a stable sequence that can be traversed multiple times. In addit
 The *Collection* protocol builds on top of *Sequence*. In addition from all the methods inherited from sequence, they have the *count* property. Use the collection conformance for sequence types that are finite.\
 *Arrays*, *Dictionaries*, and *Sets* are collections as are *CountableRange* and *UnsafeBufferPointer*.\
 
+---
+
+> **Activity**\
+> Implementing a queue as a collection type.
+> Good way to start is to define a protocol that describes what a queue is.
+
+```swift
+/// a type that can `enqueue` and `dequeue` elements.
+protocol Queue {
+   /// the type of elements held in `self`
+   associatedtype Element
+   /// enqueue `element` to `self`
+   mutating func enqueue(_ newElement: Element)
+   /// dequeue `element` from `self`
+   mutating func dequeue() -> Element?
+}
+```
+> Simply tells us about the definition of a queue. It's defined generically. It can contain any type, represented by the associated type Element. It imposes no restriction on what Element is. 
+
+```swift
+/// An efficient variable-size FIFO queue of elements of type `Element`
+struct FIFOQueue<T>: Queue {
+   typealias Element = T
+
+   private var left: [Element] = []
+   private var right: [Element] = []
+   
+   /// Add an element to the back of the queue.
+   /// - Complexity: O(1).
+   mutating func enqueue(_ newElement: Element) {
+   	right.append(newElement)
+   }
+
+   /// Removes front of the queue.
+   /// Returns `nil` in case of an empty queue.
+   /// - Complexity: Amortized O(1).
+   mutating func dequeue() -> Element? {
+   	if left.isEmpty {
+   	   left = right.reversed()
+   	   right.removeAll()
+   	}
+   	return left.popLast()
+   }
+}
+```
+
+This implementation uses a technique of simulating a queue using two stacks(two arrays). Although the reversed function has the ```reversed()``` function, it still amortizes to O(1) since it only reverses the array once the left array is empty
+
+---
+
 
 ---
 
