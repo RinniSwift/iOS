@@ -79,6 +79,44 @@ for prefix in Prefixsequence(string: "Rinni") {
 
 ---
 
+**AnyIterator** is an iterator that wraps another iterator. (does not have value semantics) It also has a second initializer that takes the next function directly as its argument. e.g. We can define the fibonacci iterator as a function that returns an ```AnyIterator```:
+
+```swift
+func fibsIterator() -> AnyIterator<Int> {
+   var state = (0, 1)
+   return AnyIterator {
+   	let upcomingNumber = state.0
+   	state = (state.1, state.0 + state.1)
+   	return upcomingNumber
+   }
+}
+
+let fibsSequence = AnySequence(fibsIterator)
+Array(fibsSequence.prefix(10)) // [0, 1, 1, 2, 3, 5, 8, 13, 21, 34]
+```
+
+Another alternative is to use the ```sequence(first:next:)``` returns a sequence as the first element as the first argument passed in and ```sequence(state:next:)``` more powerful because we can keep a mutable state around the next closure.
+
+```swift
+let randomNumbers = sequence(first: 100) { (previous: UInt32) in
+   let newValue = UInt32.randome(in: 0...previous)
+   guard newValue > 0 else { return nil }
+   return newValue
+}
+Array(randomNumbers) 
+
+let fibsSequence = sequence(state: (0, 1)) {
+   // compiler needs type inference help here
+   (state: inout(Int, Int)) -> Int? in
+   let upcomingNumber = state.0
+   state = (state.1, state.0 + state.1)
+   return upcomingNumber
+}
+Array(fibsSequence.prefix(10))
+```
+
+---
+
 
 **Resource**\
 objc Advanced Swift *updated for Swift 3* book by Chris Eidhof, Ole Begemann, and Airspeed Velocity
