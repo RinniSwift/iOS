@@ -2,7 +2,16 @@
 
 #### Sequence Protocol
 A sequence protocol lets you iterate over a the same type of values. Most common way is a *for-in* loop. Implement Sequence with operations that have to depend on sequential access to a series of values.\
-Making your own custom types conform to the Sequence protocol enables the *for-in* loop and *contains* method. To add the conformance to your own custom type, you must provide a ```makeIterator()``` method that returns an *iterator*. 
+Making your own custom types conform to the Sequence protocol enables the *for-in* loop and *contains* method. To add the conformance to your own custom type, you must provide a ```makeIterator()``` method that returns an *iterator*.
+
+```Swift
+protocol Sequence {
+   associatedtype Iterator: IteratorProtocol
+   asociatedtype Subsequence
+
+   __consuming func makeIterator() -> Self.Iterator
+}
+``` 
 
 #### Iterator Protocol
 Sequences provide access to their elements by creating an iterator. The iterator produces the values of the sequence one at a time and keeps track of its iteration state. The only method defined in the *Iterator Protocol* is ```next()``` which must return the next element on each subsequent call or nil. 
@@ -10,7 +19,7 @@ Sequences provide access to their elements by creating an iterator. The iterator
 ```swift
 protocol IteratorProtocol {
    associatedtype Element
-   mutating func next() -> Element?
+   mutating func next() -> Self.Element?
 }
 ```
 
@@ -114,6 +123,12 @@ let fibsSequence = sequence(state: (0, 1)) {
 }
 Array(fibsSequence.prefix(10))
 ```
+
+**Subsequence**\
+*Sequence* has another associated type, named **Subsequence**. Subsequence is used as the return type for operations that return slices of the original sequence.
+- ```prefix``` and ```sufix``` returns the first or last n elements
+- ```dropFirst``` and ```dropLast``` returns subsequence where the first or last n elements have been removed
+- ```split``` break the sequence at the specified seperator and returns an array of subsquences.
 
 ---
 
