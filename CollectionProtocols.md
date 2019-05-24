@@ -24,6 +24,54 @@ while let element = iterator.next() {
 ```
 This iterator can be used explicitly instead of a for-in loop by calling the iterators next until it returns nil.
 
+---
+
+#### Activity: Implementing a string iterator that iterates over and increments the prefix
+
+```swift
+struct PrefixIterator: IteratorProtocol {
+
+   // protocol stub--this is not necessary since it can infer the type when called the PrefixSequence
+   // typealias Element = Substring
+   
+   let string: String
+   var offset: String.index
+
+   init(string: String) {
+   	self.string = string
+   	self.offset = string.startIndex
+   }
+
+   // protocol stub
+   mutating func next() -> Substring? {
+   	guard offset < string.endIndex else { return nil }
+   	offset = string.index(after: offset)
+   	return string[string.startIndex..<offset]
+   }
+}
+```
+Now that we have the iterator protocol, we can use this in the makeIterator() method in a 'sequence'
+```swift
+struct PrefixSequence: Sequence {
+   let string: String
+
+   func makeIterator() -> PrefixIterator {
+   	return PrefixIterator(string)
+   }
+}
+```
+Now we can iterate over the sequence--in this case, a string-- and return all substrings from start to incrementing until the last elements.
+```swift
+for prefix in Prefixsequence(string: "Rinni") {
+   print(prefix)
+}
+// "R"
+// "Ri"
+// "Rin"
+// "Rinn"
+// "Rinni"
+```
+We have just created infinite sequences. We can also construct another function or parameter to slice off the finite piece.
 
 
 ---
