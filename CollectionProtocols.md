@@ -26,7 +26,8 @@ This iterator can be used explicitly instead of a for-in loop by calling the ite
 
 ---
 
-#### Activity: Implementing a string iterator that iterates over and increments the prefix
+> **Activity**\
+> Implementing a string iterator that iterates over and increments the prefix
 
 ```swift
 struct PrefixIterator: IteratorProtocol {
@@ -50,7 +51,7 @@ struct PrefixIterator: IteratorProtocol {
    }
 }
 ```
-Now that we have the iterator protocol, we can use this in the makeIterator() method in a 'sequence'
+> Now that we have the iterator protocol, we can use this in the makeIterator() method in a 'sequence'
 ```swift
 struct PrefixSequence: Sequence {
    let string: String
@@ -60,7 +61,7 @@ struct PrefixSequence: Sequence {
    }
 }
 ```
-Now we can iterate over the sequence--in this case, a string-- and return all substrings from start to incrementing until the last elements.
+> Now we can iterate over the sequence--in this case, a string-- and return all substrings from start to incrementing until the last elements.
 ```swift
 for prefix in Prefixsequence(string: "Rinni") {
    print(prefix)
@@ -71,7 +72,7 @@ for prefix in Prefixsequence(string: "Rinni") {
 // "Rinn"
 // "Rinni"
 ```
-We have just created infinite sequences. We can also construct another function or parameter to slice off the finite piece.
+> We have just created infinite sequences. We can also construct another function or parameter to slice off the finite piece.
 
 
 ---
