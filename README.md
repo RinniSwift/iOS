@@ -50,4 +50,7 @@
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*Identity*\
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*Functions*
 
+8. [CollectionProtocols](https://github.com/RinniSwift/iOS/blob/master/CollectionProtocols.md)\
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*Sequence protocol*\
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*Iterator protocol*
 
