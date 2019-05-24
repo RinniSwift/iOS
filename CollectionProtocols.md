@@ -130,6 +130,12 @@ Array(fibsSequence.prefix(10))
 - ```dropFirst``` and ```dropLast``` returns subsequence where the first or last n elements have been removed
 - ```split``` break the sequence at the specified seperator and returns an array of subsquences.
 
+#### Collection Protocol
+A collection is a stable sequence that can be traversed multiple times. In addition to traversals, collection elements can also be accessed through subsript with an index (arrays). Subscript index are often integers. But there are also indixes which are opaque values (dictionaries, strings) which can be non-intuative. Collection indices form a finite range. Unlike sequences, collections can't be infinite.\
+The *Collection* protocol builds on top of *Sequence*. In addition from all the methods inherited from sequence, they have the *count* property. Use the collection conformance for sequence types that are finite.\
+*Arrays*, *Dictionaries*, and *Sets* are collections as are *CountableRange* and *UnsafeBufferPointer*.\
+
+
 ---
 
 
