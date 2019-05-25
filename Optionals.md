@@ -14,22 +14,36 @@ Optionals conform to the ExpressibleByNilLiteral so that you can write nil inste
 Even if we never write the word 'Optional', when we create 	```Int?``` it is equivalent to writing ```Optional<Int>```. You must unwrap optional values before using them and there are many ways to. We use these for "failable" values:
 
 - *if let*
+- *if var*
 - *while let*
+- *while var*
 - *Doubly nested optionals*
+- *Optional chaining*
 
 **if let**\
-Optional binding is similar to the switch statement.
+Optional binding is similar to the switch statement.\
+**if var**\
+If wanting to make changes to the optional value. The one copied will not affect the value inside the original copy. *Optional are value types, and unwrapping them unwraps the value inside.*
 
 ```swift
 var array = ["r", "i", "n"]
 if let index = array.index(of: "i") {
    array.remove(at: index)
 }
+
+let number = "1"
+if var i = Int(number) {
+   i += 1
+   print(i)
+}
+// 2
 ```
-You can also bind other entries in the same if statement.\
+You can also bind other entries in the same if statement.
 
 **while let**\
-Similar to the if let. This is a loop that only terminates when a nil is returned. This is useful for the readline() function which will return nil once it hits the last line or even until the string has a nil value when mutating it.
+Similar to the if let. This is a loop that only terminates when a nil is returned. This is useful for the readline() function which will return nil once it hits the last line or even until the string has a nil value when mutating it.\
+**while var**\
+Making changes to an optional value but the value will not change the original one.
 
 ```swift
 while let line = readline() {
@@ -58,6 +72,37 @@ for case nil in maybeInts {
 // no value
 ```
 
+**Optional chaining**\
+You can chain calls on optional values as such:
+
+```swift
+let result = str?.uppercased()
+let resultLower = str?.uppercased().lowercased()
+```
+The reason why we didn't need the```?``` after the ```uppercased()``` is becasue optional chaining is a *"flattening"* operation. ```str?.uppercased()``` returned an optional so if you wrote ```str?.uppercased()?.lowercased()```, this would get you an optional optional. So we just write the second chain without an optional to represent that the optionality is already captured. But! If the ```uppercased()``` returned an optional, then your need the ```?``` to express that you were chaining *that* optional. e.g.:
+
+```swift
+extension Int {
+   var half: Int? {
+   	guard self > 1 else { return nil }
+   	return self / 2
+   }
+}
+
+20.half?.half?.half // Optional(2)
+```
+Optional chaining can be used instead of ```if let``` as well.
+
+```swift
+let splitViewController: UISplitViewController? = nil
+let myDelegate: UISplitViewControllerDelegate? = nil
+if let viewController = splitViewController {
+   viewController.delegate = myDelegate
+}
+
+// using optional chaining works as well:
+splitViewController?.delegate = myDelegate
+```
 
 ---
 

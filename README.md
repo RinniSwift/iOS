@@ -57,6 +57,6 @@
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*Collection protocol*\
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*ExpressibleByArrayLiteral protocol*
 
-9. [Optionals]()\
+9. [Optionals](https://github.com/RinniSwift/iOS/blob/master/Optionals.md)\
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*Optional enum*\
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*unwrapping optionals*
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*Unwrapping optionals*
