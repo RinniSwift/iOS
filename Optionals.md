@@ -21,7 +21,7 @@ Even if we never write the word 'Optional', when we create 	```Int?``` it is equ
 - *Optional chaining*
 - *nil-Coalescing operator*
 
-**if let**\
+### if let
 Optional binding is similar to the switch statement.\
 **if var**\
 If wanting to make changes to the optional value. The one copied will not affect the value inside the original copy. *Optional are value types, and unwrapping them unwraps the value inside.*
@@ -41,7 +41,7 @@ if var i = Int(number) {
 ```
 You can also bind other entries in the same if statement.
 
-**while let**\
+### while let
 Similar to the if let. This is a loop that only terminates when a nil is returned. This is useful for the readline() function which will return nil once it hits the last line or even until the string has a nil value when mutating it.\
 **while var**\
 Making changes to an optional value but the value will not change the original one.
@@ -52,7 +52,7 @@ while let line = readline() {
 }
 ```
 
-**doubly nested optionals**\
+### doubly nested optionals
 The type the optional wraps can itself be an optional, which leads to optionals nested inside optionals. 
 
 ```swift
@@ -73,7 +73,7 @@ for case nil in maybeInts {
 // no value
 ```
 
-**Optional chaining**\
+### Optional chaining
 You can chain calls on optional values as such:
 
 ```swift
@@ -105,7 +105,7 @@ if let viewController = splitViewController {
 splitViewController?.delegate = myDelegate
 ```
 
-**nil-Coalescing operator**\
+### nil-Coalescing operator
 Use this when you want to unwrap an optional and replacing nil with some default value.\
 Some use cases would be if you want to access the first value in an array, but in the case that it's empty, you want to provide a deafault.
 
