@@ -19,6 +19,7 @@ Even if we never write the word 'Optional', when we create 	```Int?``` it is equ
 - *while var*
 - *Doubly nested optionals*
 - *Optional chaining*
+- *nil-Coalescing operator*
 
 **if let**\
 Optional binding is similar to the switch statement.\
@@ -103,6 +104,35 @@ if let viewController = splitViewController {
 // using optional chaining works as well:
 splitViewController?.delegate = myDelegate
 ```
+
+**nil-Coalescing operator**\
+Use this when you want to unwrap an optional and replacing nil with some default value.\
+Some use cases would be if you want to access the first value in an array, but in the case that it's empty, you want to provide a deafault.
+
+```swift
+let stringInt = "1"
+let number = Int(stringInt) ?? 0
+
+let array = [1, 2, 3]
+array.first ?? 0	// 1
+// Or
+// 2.
+!array.isEmpty ? array[0] : 0	// 1. is better than 2.
+
+array.count > 5 ? array[5] : 0	// 0
+```
+The ```??``` signals that this is a default value. In the ```2.```, it awkwardly starts first with the check, then the value, then the default. Where as the first choice we put the default in the middle and the value at the end.\
+nil-Coalescing can also be chained.
+
+```swift
+let i: Int? = nil
+let j: Int? = nil
+let k: Int? = 22
+
+i ?? j ?? k	// Optional(2)
+```
+This *nil-Coalescing chaining returns the first value that is non-nil*\
+You can think of this as similar to the "or" statement where if one value is non-nil, it returns that. And also can think of the "if let" as an "and" statement. Where when you chain if let entries, they all must be non-nil.
 
 ---
 
