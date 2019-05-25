@@ -191,6 +191,8 @@ struct FIFOQueue<T>: Queue {
 
 ---
 
+#### ExpressibleByArrayLiteral
+This allows users to create the class or struct with array literals. This only requires one property and one initializer: The ```typealias ArrayLiteralElement``` and the ```init(arrayLiteral elements: T...)```
 
 ---
 
