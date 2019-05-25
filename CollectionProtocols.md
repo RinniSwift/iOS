@@ -134,6 +134,11 @@ Array(fibsSequence.prefix(10))
 A collection is a stable sequence that can be traversed multiple times. In addition to traversals, collection elements can also be accessed through subsript with an index (arrays). Subscript index are often integers. But there are also indixes which are opaque values (dictionaries, strings) which can be non-intuative. Collection indices form a finite range. Unlike sequences, collections can't be infinite.\
 The *Collection* protocol builds on top of *Sequence*. In addition from all the methods inherited from sequence, they have the *count* property. Use the collection conformance for sequence types that are finite.\
 *Arrays*, *Dictionaries*, and *Sets* are collections as are *CountableRange* and *UnsafeBufferPointer*.\
+With conforming to the collection protocol, the type can have more than 40 methods and properties.
+- for-in loop to iterate over elements. ```for x in class/struct {}```
+- pass the class/struct to methods that take sequences e.g: ```var a = Array(class/struct)```
+- can call methods and properties that extend Sequence: ```map()```, ```flatMap()```, ```filter()```, ```sorted()```, ```joined(separator:)```
+- can call methods and properties that extend Collection: ```isEmpty```, ```count```, ```first```
 
 ---
 
@@ -181,7 +186,8 @@ struct FIFOQueue<T>: Queue {
 }
 ```
 
-This implementation uses a technique of simulating a queue using two stacks(two arrays). Although the reversed function has the ```reversed()``` function, it still amortizes to O(1) since it only reverses the array once the left array is empty
+> This implementation uses a technique of simulating a queue using two stacks(two arrays). Although the reversed function has the ```reversed()``` function, it still amortizes to O(1) since it only reverses the array once the left array is empty
+> Conforming to the Collection protocol involves in declaring and methods: ```startIndex```, ```endIndex```,  ```index(after:)```, and ```subscript(position:)```. Creating an extension to the FIFOQueue struct will give you all the functions and properties of a typical collection type.
 
 ---
 
