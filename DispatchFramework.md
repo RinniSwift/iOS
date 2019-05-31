@@ -1,7 +1,5 @@
-
-# Grand Central Dispatch *GCD or Dispatch*
-
-*GCD organizes tasks into specific queues, and later on the tasks on the queues will get executed in a proper and available thread from the pool. The dispatch framework is a very fast and efficient concurrency framework*
+# Concurrency and Application Design
+*Threads have been around for a while. OS X and iOS take an asynchronous design approach to solve the concurrency problem with the following technologies: GCD and Operation Queues.*
 
 ## CPU's then and now
 code executed by a CPU core is a thread. So your app is going to have many threads.
@@ -9,6 +7,20 @@ In the past a processor had one single core which means it can only deal wiht on
 Time-slicing was introduced so CPU's can run tasks concurrently(at the same time) using context-switching
 As processors gained more core, they were capabale of multi-tasking using parallelism
 Now, CPU's use hyperthreading (divides CPU clock cycles between different programs to run more than one program at a time)
+
+### Thread
+The developer has to decide how many threads to create and adjust the number dynamically as system conditions change. So creating asynchronous tasks with threads, developers need to create tasks for execution as well as creating and managing threads. That is why OS X and iOS provides technologies to allow you to perform any task asynchronously without having to manage the threads yourself.
+
+**GCD**\
+Moves the thread management code down to the system level. All you have to do is define tasks you want to execute and put them in the appropriate dispatch queue. GCD takes care of creating the needed threads and scheduling tasks to run on those threads.
+
+**Operation Queues**\
+Are *Objective-C* objects that act very much like dispatch queues. You define the tasks you want to execute and add them to an aperation queue. Which handles scheduling and execution of those tasks.
+
+
+# Grand Central Dispatch *GCD or Dispatch*
+
+*GCD organizes tasks into specific queues, and later on the tasks on the queues will get executed in a proper and available thread from the pool. The dispatch framework is a very fast and efficient concurrency framework*
 
 ## Synchronous and Asynchronous execution
 Each work item can be executed either synchronously or asynchronously. 
