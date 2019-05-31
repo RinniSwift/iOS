@@ -53,9 +53,9 @@ The main dispatch queue is a globally available serial queue that executes tasks
 - **dispatch sources**: It generates notifications in response to specific types of system events. Example is used to monitor events such as process notifications, signals, and descriptor events.
 
 # Operation Queues
-*Operation Queues is the cocoa equivalent of a concurrent dispatch queue. And is implemented using the* **NSOperationQueue** *class. Whereas dispatch queues execute tasks in FIFO, operation queues take other factors into account determining the execution of tasks.*\
+*Operation Queues is the cocoa equivalent of a concurrent dispatch queue. And is implemented using the* **NSOperationQueue** *class. Whereas dispatch queues execute tasks in FIFO, operation queues take other factors into account determining the execution of tasks.*
 
-The tasks you submit to an operation queue must be instances of the NSOperation class. The **NSOperation** is an abstract base class. So you must define custom subclasses to perform your tasks.\
+The tasks you submit to an operation queue must be instances of the NSOperation class. The **NSOperation** is an abstract base class. So you must define custom subclasses to perform your tasks.
 
 Operation object generate key-value observing notifications. Although operation queues always execute operations concurrently, you can use dependencies to ensure they are executed serially. 
 
