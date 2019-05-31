@@ -46,6 +46,12 @@ Also known as *global dispatch queues* execute one or more tasks concurrently. B
 ## Main Dispatch Queue 
 The main dispatch queue is a globally available serial queue that executes tasks on the application’s main thread. 
 
+## Technologies that use dispatch queues
+
+- **dispatch groups**: A way to monitor a set of block objects for execution.
+- **dispatch semaphores**: They're genrally similar to semaphores but are more efficient. 
+- **dispatch sources**: It generates notifications in response to specific types of system events. Example is used to monitor events such as process notifications, signals, and descriptor events.
+
 
 ---
 # Networking in Swift
