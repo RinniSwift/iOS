@@ -1,5 +1,3 @@
-# Concurrency and Application Design
-*Threads have been around for a while. OS X and iOS take an asynchronous design approach to solve the concurrency problem with the following technologies: GCD and Operation Queues.*
 
 ## CPU's then and now
 code executed by a CPU core is a thread. So your app is going to have many threads.
@@ -7,6 +5,9 @@ In the past a processor had one single core which means it can only deal wiht on
 Time-slicing was introduced so CPU's can run tasks concurrently(at the same time) using context-switching
 As processors gained more core, they were capabale of multi-tasking using parallelism
 Now, CPU's use hyperthreading (divides CPU clock cycles between different programs to run more than one program at a time)
+
+# Concurrency and Application Design
+*Threads have been around for a while. OS X and iOS take an asynchronous design approach to solve the concurrency problem with the following technologies: GCD and Operation Queues.*
 
 ### Thread
 The developer has to decide how many threads to create and adjust the number dynamically as system conditions change. So creating asynchronous tasks with threads, developers need to create tasks for execution as well as creating and managing threads. That is why OS X and iOS provides technologies to allow you to perform any task asynchronously without having to manage the threads yourself.
@@ -23,7 +24,7 @@ Are *Objective-C* objects that act very much like dispatch queues. You define th
 *GCD organizes tasks into specific queues, and later on the tasks on the queues will get executed in a proper and available thread from the pool. The dispatch framework is a very fast and efficient concurrency framework*
 
 ## Synchronous and Asynchronous execution
-Each work item can be executed either synchronously or asynchronously. 
+Each work item can be executed either synchronously(serially) or asynchronously(concurrently). 
 with synchronous tasks, you'll block the execution queue, but with async tasks, your call will instantly return and the queue can automatically continue the execution of remaing tasks.
 
 ###### Synchronous
@@ -36,18 +37,14 @@ With dispatch queues, you can execute your code synchronously or asynchronously.
 > On every dispatch queue, tasks will be executed in the same order as you add them to the queue (FIFO) the first task in the line will be executed first but 
 > the task completion is not guaranteed. task completion is up to the code complexity. not order.
 
-## Serial and Concurrent queues
-there are two types of dispatch queues: serial queues executes tasks one at a time. comcurrent tasks, execute tasks in parallell(same time)
+## Serial Queues
+Also known as *private dispatch queues* executes one task at a time in the order that they were added to the queue. The currently executed tasks are run on distinct threads and serial queues are often used to synchronize access to a specific resource.
 
+## Concurrent queues
+Also known as *global dispatch queues* execute one or more tasks concurrently. But tasks are still started in order of how they were added. 
 
-## Main Queue (serial queue)
-every task on the main queue runs on the main thread.
-
-## Global Queue (concurrent queue)
-concurrent queue shared throughout the operating system. including the background queue
-
-## Custom Queue(serial or concurrent queue)
-custom queues are mapped into global queues by specifying a QoS
+## Main Dispatch Queue 
+The main dispatch queue is a globally available serial queue that executes tasks on the application’s main thread. 
 
 
 ---
