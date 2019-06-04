@@ -54,7 +54,7 @@
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*Sequence protocol*\
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; *Subsequence*\
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*Iterator protocol*\
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*value semantics/reference semantics*
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*Value semantics/Reference semantics*\
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*Collection protocol*\
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*ExpressibleByArrayLiteral protocol*
 
