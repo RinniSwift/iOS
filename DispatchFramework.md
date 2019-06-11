@@ -46,6 +46,9 @@ Also known as *global dispatch queues* execute one or more tasks concurrently. B
 ## Main Dispatch Queue 
 The main dispatch queue is a globally available serial queue that executes tasks on the application’s main thread. 
 
+## QoS
+
+
 ## Technologies that use dispatch queues
 
 - **dispatch groups**: A way to monitor a set of block objects for execution.
@@ -108,7 +111,30 @@ Semaphores acts as the decision maker about what shared resource gets displayed 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Call *wait()* before using the shared resource. To ask if the shared resource is available or not. should not be called on the main thread since it will freeze the app.\
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Call *signal()* after using the resource. Signaling the semaphore that we are done interacting with it.
 
-**Thread safe**: *Code that can be safely called from multiple threads and not cause any issues.*
+**Thread safe**: *Code that can be safely called from multiple threads and not cause any issues.*\
+
+Below Is a sample simulation of 2 people using a Switch--shared resource.
+
+```swift
+let semaphore = DispatchSemaphore(value: 1)
+DispatchQueue.global().async {
+    print("Person 1 - wait")
+    semaphore.wait()
+    print("Person 1 - wait finished")
+    sleep(1) // Person 1 playing with Switch
+    print("Person 1 - done with Switch")
+    semaphore.signal()
+}
+DispatchQueue.global().async {
+    print("Person 2 - wait")
+    semaphore.wait()
+    print("Person 2 - wait finished")
+    sleep(1) // Person 2 playing with Switch
+    print("Person 2 - done with Switch")
+    semaphore.signal()
+}
+```
+*Explanation*: declare the semaphore counter value to 1 indicating that we only want the resource to be accessible by one thread. Then we call the wait() to make sure we can access the resource and execute the task and don't forget to call the signal() to signal that we are done using the resource.
 
 ## Semaphores and GCD
 Dispatch groups are used when you have a load of things you want to do that can happen all at once.\
