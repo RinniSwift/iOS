@@ -118,15 +118,12 @@ Semaphores acts as the decision maker about what shared resource gets displayed 
 ```swift
 let semaphore = DispatchSemaphore(value: 1)
 DispatchQueue.global().async {
-    print("Person 1 - wait")
     semaphore.wait()
-    print("Person 1 - wait finished")
     sleep(1) // Person 1 playing with Switch
     print("Person 1 - done with Switch")
     semaphore.signal()
 }
 DispatchQueue.global().async {
-    print("Person 2 - wait")
     semaphore.wait()
     print("Person 2 - wait finished")
     sleep(1) // Person 2 playing with Switch
