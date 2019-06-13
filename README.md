@@ -8,14 +8,16 @@
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*hash tables, hash functions*\
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*linear probing and open addressing in creating hash tables*
 
-2. [DispatchFramework](https://github.com/RinniSwift/iOS/blob/master/DispatchFramework.md)\
+2. [DispatchFramework](https://github.com/RinniSwift/iOS/tree/master/Concurrency)\
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*CPU's then and now*\
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*synchronous and asynchronnous tasks*\
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*main, serial, concurrent, global, and custom queues*\
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*networking using URLSession*\
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*URLSession configurations*\
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*URLSessionTask: URLSessionDataTask*\
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*threads*
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*semaphores*
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*operations*
 
 3. [Initializers](https://github.com/RinniSwift/iOS/blob/master/Initializers.md)\
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*stored properties*\
