@@ -56,12 +56,12 @@ GCD provides 4 quality of services:
 - ```.utility```: work that may take some time that doesn't require emmediate results. e.x. downloading or importing data. Focuses on a balance between responsiveness, performance, and energy efficiency.
 - ```.background```: work that operates in the background and isn't visible to the user. e.x. indexing, synchronizing, and backups. Focuses on energy efficiency.
 
-*Explanation*: Use QoS level of userInitiated or lower for optimization.\
+*Explanation*: Use QoS level of userInitiated or lower for optimization.
 
 And two special quality of services:
 - ```.default```: the priority falls between user-initiated and utility.
 - ```.unspecified```: this represents the absence of qos and cues the system an environmental qos should be inferred.
-These two special cases we won't be exposed to but they do exist.\
+These two special cases we won't be exposed to but they do exist.
 
 
 > If your app uses operations and queues to perform work, you can specify a QoS for that work. 
@@ -94,9 +94,40 @@ In the case of asynchronous work, the system will resolve on a serial queue.
 # Operation Queues
 *Operation Queues is the cocoa equivalent of a concurrent dispatch queue. And is implemented using the* **NSOperationQueue** *class. Whereas dispatch queues execute tasks in FIFO, operation queues take other factors into account determining the execution of tasks.*
 
-The tasks you submit to an operation queue must be instances of the NSOperation class. The **NSOperation** is an abstract base class. So you must define custom subclasses to perform your tasks.
+The tasks you submit to an operation queue must be instances of the NSOperation class. The **NSOperation** is an abstract base class. So you must define custom subclasses to perform your tasks. And they allow you to encapsulate a unit of work into a package that you can submit for execution at some time in the future.
 
-Operation object generate key-value observing notifications. Although operation queues always execute operations concurrently, you can use dependencies to ensure they are executed serially. 
+**Key Attributes**
+- generates key-value observing
+- subsribes a single unit of work
+- higher level of abstraction over GCD
+- object oriented vs. functions and closures in GCD
+- execute concurrently -- but can be serial by using dependencies
+- offers more developer control -- over the operations lifecycle (*insight and control into the execution of tasks*)
+
+**Control over operation lifecycle**
+- *Max number of operations*: You can specify the max number of queues in an ```OperationQueue``` that can run simultaneously.
+- *Execution priority levels*: You can configure the priority level of an operation in an operation queue.
+- *Pause, Resume, Cancel*: Operations can also be paused resumed and canceled.
+
+**4 operation lifecycle events**
+- *Pending*: starts off pending when you add operations to the queue
+- *Ready*: as soon as the conditions are fulfilled, it enters a ready state and in case there is an open slot, it will start executing
+- *Finished*: task will be removed out of the OperationQueue
+- *Canceled*: each state can be cancelled at any point. Except finish state
+
+**Executing Operations**\
+Typically you submit them to an operation queue. The operations gets executed either *directly*, running on a secondary thread, or *indirectly*, using the ```libdispatch``` library (aka, GCD). Another way to execute operations are by calling the ```start()``` method. Because operations can still not be in the stage where it is ready to process, calling the *start()* can put some burden on your app.
+
+**Operation Properties** *the KVO key paths associated with an operations state at various life cycles -- read only*
+- *isReady*: Lets clients know when an operation is ready to execute. ```true``` when the operation is ready to execute now or ```false``` if there are still unfinished operations on which it is dependent.
+- *isExecuting*: Once the ```start()``` method is invoked, your operation moves to the isExecuting state. ```true``` if the operation is actively working on its assigned task or ```false``` if it is not.
+- *isCancelled*: Informs clients that the cancellation of an operation was requested. If true, the app calls the cancel method, then it will transition to the isCancelled state, before moving onto the isFinished state.
+- *isFinished*: Lets clients know that an operation finished its task successfully or was cancelled and is exiting. If it was not canceled, then it will move directly from isExecuting to isFinished. Marking operations as finished is critical to keeping queues from backing up with in-progress or cancelled operations.
+
+*NOTE: all of these states are handled by the Operation class. The only states you can manipulate are the isExecuting and isCanceled by calling the cancel() method on the object*
+
+
+
 
 ---
 # Networking in Swift
