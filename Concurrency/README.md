@@ -124,9 +124,10 @@ Typically you submit them to an operation queue. The operations gets executed ei
 - *isCancelled*: Informs clients that the cancellation of an operation was requested. If true, the app calls the cancel method, then it will transition to the isCancelled state, before moving onto the isFinished state.
 - *isFinished*: Lets clients know that an operation finished its task successfully or was cancelled and is exiting. If it was not canceled, then it will move directly from isExecuting to isFinished. Marking operations as finished is critical to keeping queues from backing up with in-progress or cancelled operations.
 
-*NOTE: all of these states are handled by the Operation class. The only states you can manipulate are the isExecuting and isCanceled by calling the cancel() method on the object*
+*NOTE: all of these states are handled by the Operation class. The only states you can manipulate are the isExecuting and isCanceled by calling the cancel() method on the object*\
 
-
+More on using Operations [here](https://github.com/RinniSwift/iOS/blob/master/Concurrency/operations.playground/Contents.swift)\
+and [here](https://github.com/RinniSwift/iOS/blob/master/Concurrency/BlockOperation_ex2.playground/Contents.swift)
 
 
 ---
@@ -200,7 +201,7 @@ DispatchQueue.global().async {
 ```
 *Explanation*: declare the semaphore counter value to 1 indicating that we only want the resource to be accessible by one thread. Then we call the ```wait()``` to make sure we can access the resource and execute the task and don't forget to call the ```signal()``` to signal that we are done using the resource.\
 
-More on semaphores [here](https://github.com/RinniSwift/iOS/blob/master/Concurrency/semaphores.playground/Contents.swift).
+More on using semaphores [here](https://github.com/RinniSwift/iOS/blob/master/Concurrency/semaphores.playground/Contents.swift).
 
 ## Semaphores and GCD
 Dispatch groups are used when you have a load of things you want to do that can happen all at once.\
