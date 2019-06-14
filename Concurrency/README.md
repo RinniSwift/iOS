@@ -47,6 +47,42 @@ Also known as *global dispatch queues* execute one or more tasks concurrently. B
 The main dispatch queue is a globally available serial queue that executes tasks on the application’s main thread. 
 
 ## QoS
+A Quality of Service class allows you to categorize work to be performed by NSOperation, NSOperationQueue, NSThread objects, and dispatch queues.\
+When setting up global dispatch queues, you don't specify the priority directly but you are required to specify a quality of service which guides GCD into determining the priority level to give the task.\
+GCD provides 4 quality of services:
+
+- ```.userInteractive```: work that is interacting with the user and requires instant visual layout such as tasks that update the UI on the main thread; refreshing the ui, performing animations. Focuses on responsiveness and performance.
+- ```.userInitiated```: work that the user initiated and requires immediate results. e.x. opening a document, doing something when user taps on button. The work is required to continue  user interaction. Focuses on responsiveness and performance.
+- ```.utility```: work that may take some time that doesn't require emmediate results. e.x. downloading or importing data. Focuses on a balance between responsiveness, performance, and energy efficiency.
+- ```.background```: work that operates in the background and isn't visible to the user. e.x. indexing, synchronizing, and backups. Focuses on energy efficiency.
+
+*Explanation*: Use QoS level of userInitiated or lower for optimization.\
+
+And two special quality of services:
+- ```.default```: the priority falls between user-initiated and utility.
+- ```.unspecified```: this represents the absence of qos and cues the system an environmental qos should be inferred.
+These two special cases we won't be exposed to but they do exist.\
+
+
+> If your app uses operations and queues to perform work, you can specify a QoS for that work. 
+> NSOperation and NSOperationQueue both have a property called ```qualityOfService``` of type ```NSQualityOfService``` 
+> ```swift
+> let myOperation: NSOperation = MyOperation()
+> myOperation.qualityOfService = .Utility
+> ```
+> DisptachQueues have a property you declare when calling initializing the queue
+> ```swift
+> let queue = DispatchQueue.global(qos: .utility)
+> ```
+> NSThread have a property of ```qualityOfService``` of type ```NSQualityOfService```
+> ```swift
+> let queue = DispatchQueue.global(qos: .utility)
+> ```
+
+#### Priority Inversions
+When high priority work becomes dependant on lower priority work, or it becomes the result of lower priority work, a *priority inversion* occurs. As a result, blocking, spinning, or polling may occur.\
+In the case of synchronous work, the system will resolve by raising the QoS of the lower priority queue for the duration of the inversion. \
+In the case of asynchronous work, the system will resolve on a serial queue.
 
 
 ## Technologies that use dispatch queues
@@ -131,11 +167,14 @@ DispatchQueue.global().async {
     semaphore.signal()
 }
 ```
-*Explanation*: declare the semaphore counter value to 1 indicating that we only want the resource to be accessible by one thread. Then we call the ```wait()``` to make sure we can access the resource and execute the task and don't forget to call the ```signal()``` to signal that we are done using the resource.
+*Explanation*: declare the semaphore counter value to 1 indicating that we only want the resource to be accessible by one thread. Then we call the ```wait()``` to make sure we can access the resource and execute the task and don't forget to call the ```signal()``` to signal that we are done using the resource.\
+
+More on semaphores [here](https://github.com/RinniSwift/iOS/blob/master/Concurrency/semaphores.playground/Contents.swift).
 
 ## Semaphores and GCD
 Dispatch groups are used when you have a load of things you want to do that can happen all at once.\
 Semaphores are used when you have a resource that can be accessed by N threads at the same time. They are used mainly for multiple tasks that use the same resource.
+
 
 ### Resources
 - [A quick look at semaphores in Swift](https://medium.com/swiftly-swift/a-quick-look-at-semaphores-6b7b85233ddb)

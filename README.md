@@ -12,12 +12,14 @@
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*CPU's then and now*\
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*synchronous and asynchronnous tasks*\
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*main, serial, concurrent, global, and custom queues*\
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*quality of services class*\
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*priority inversions*\
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*networking using URLSession*\
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*URLSession configurations*\
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*URLSessionTask: URLSessionDataTask*\
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*threads*
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*semaphores*
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*operations*
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*threads*\
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*semaphores*\
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*operations*\
 
 3. [Initializers](https://github.com/RinniSwift/iOS/blob/master/Initializers.md)\
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*stored properties*\
