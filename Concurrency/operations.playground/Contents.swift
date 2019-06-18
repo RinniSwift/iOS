@@ -1,5 +1,6 @@
 
 import Foundation
+import PlaygroundSupport
 
 let printerOperation = BlockOperation() // 1) create printerOperation as BlockOperation
 
@@ -22,3 +23,32 @@ operationQueue.addOperation(printerOperation) // 5) add operation to queue
 //    The order of the submitted blocks were not in order.
 // 2. How about the completionBlock's execution order?
 //    THe completionBlock's order executed after all operations were completed.
+
+
+/*
+ 
+ creating an operation queue
+ 
+ */
+
+PlaygroundPage.current.needsIndefiniteExecution = true
+
+// Queue
+let operationQueuee = OperationQueue()
+operationQueuee.qualityOfService = .userInitiated
+
+class MyOperation: Operation {
+    
+    override func main() {
+        print("MyOp started")
+        // typically wrong running tasks
+    }
+}
+
+let myOp = MyOperation()
+
+myOp.completionBlock = {
+    print("MyOp Completed")
+}
+
+operationQueuee.addOperation(myOp)
