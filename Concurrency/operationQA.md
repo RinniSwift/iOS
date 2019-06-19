@@ -35,13 +35,13 @@ Access the main queue from the operation queue by using the ```OperationQueue.ma
 
 
 4. What are 3 ways to add work into Operation Queues?\
-Using the ```addOperation()```\
+Using the ```addOperation()```
 ```swift
 // 1. adding one operation object
 operationQueue.addOperation(opObject)
 // 2. adding block of code
 operationQueue.addOperation {
-	print("insert block of code here")
+  print("insert block of code here")
 }
 // 3. adding multiple operation objects
 operationQueue.addOperation([opObject1, opObject2, opObject3])

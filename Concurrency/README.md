@@ -124,10 +124,11 @@ Typically you submit them to an operation queue. The operations gets executed ei
 - *isCancelled*: Informs clients that the cancellation of an operation was requested. If true, the app calls the cancel method, then it will transition to the isCancelled state, before moving onto the isFinished state.
 - *isFinished*: Lets clients know that an operation finished its task successfully or was cancelled and is exiting. If it was not canceled, then it will move directly from isExecuting to isFinished. Marking operations as finished is critical to keeping queues from backing up with in-progress or cancelled operations.
 
-*NOTE: all of these states are handled by the Operation class. The only states you can manipulate are the isExecuting and isCanceled by calling the cancel() method on the object*\
+*NOTE: all of these states are handled by the Operation class. The only states you can manipulate are the isExecuting and isCanceled by calling the cancel() method on the object*
 
 More on using Operations [here](https://github.com/RinniSwift/iOS/blob/master/Concurrency/operations.playground/Contents.swift)\
-and [here](https://github.com/RinniSwift/iOS/blob/master/Concurrency/BlockOperation_ex2.playground/Contents.swift)
+and [here](https://github.com/RinniSwift/iOS/blob/master/Concurrency/BlockOperation_ex2.playground/Contents.swift)\
+Check [this file](https://github.com/RinniSwift/iOS/blob/master/Concurrency/operationQA.md) for more Q&A about Operations.
 
 
 ---
