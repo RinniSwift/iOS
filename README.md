@@ -19,7 +19,7 @@
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*URLSessionTask: URLSessionDataTask*\
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*threads*\
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*semaphores*\
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*operations*\
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*operations*
 
 3. [Initializers](https://github.com/RinniSwift/iOS/blob/master/Initializers.md)\
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*stored properties*\
@@ -65,3 +65,10 @@
 9. [Optionals](https://github.com/RinniSwift/iOS/blob/master/Optionals.md)\
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*Optional enum*\
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*Unwrapping optionals*
+
+10. [Passing Data](https://github.com/RinniSwift/iOS/tree/master/PassData)\
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*Delegation pattern*\
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*Notification center*\
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*KVO*\
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*Closures*\
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*Instantiation / prepareForSegue*
