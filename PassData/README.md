@@ -59,6 +59,53 @@ Whenever *ViewControllerB* is instantiated from *ViewControllerA*, by specifical
 > Note: \
 > Wherever the delegator view controller is going to be presented, the delegate must be declared of which it belongs to. Or else the delegation would not work.
 
+## Singleton
+
+> Singletons are objects that should only ever be created once, then shared everywhere they need to be used
+
+Singletons are a quick and easy way to solve complex problems of sharing resources across  view controllers with few lines of code. It is also used widely across the iOS SDK. Such as: `UIApplication.shared`, `UserDefaults.standard`, `URLSession.shared`.\
+*So, how do they work?* \
+Singletons contian a static variable (global variable) that returns an instance of itself and the initializer is usually `private` to prevent creating new objects. Meaning the singleton will only get instantiated through the static variable.
+
+#### Sample singleton creation 
+```swift 
+// reference type
+class SingletonA {
+
+    static let shared = SingletonA()
+    private init() { }
+
+    var username: String?
+}
+
+// value type
+struct SingletonB {
+
+    static let shared = SingletonB()
+    private init() { }
+
+    var username: String?
+}
+```
+
+Singletons that are *reference types* and *value types* act differently. If you have familiarity with reference types, each instance has a reference to the same object. Therefore each instance accessing the same object's properties. Value types, on the other hand, creates new copies on instantiation. Therefore each object being unique to itself.\
+View controllers can also be singletons.
+
+#### Sample view controller singleton creation 
+```swift
+class ViewController: UIViewController {
+
+    static let shared = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "viewController")
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+    }
+}
+```
+This allows you to create an instance of `ViewController` by calling `ViewController.shared`. Keep in mind that the `ViewDidLoad()` will only be called once no matter how many times you instantiate it because it will be the same object.
+
+
 ## Notification Center
 ## KVO
 ## Instantiation / prepareForSegue
@@ -69,3 +116,5 @@ Whenever *ViewControllerB* is instantiated from *ViewControllerA*, by specifical
 
 > **Resources**:
 > - [delegates](https://medium.com/swift2go/when-i-say-delegate-you-say-what-54df1108ba58), Swift2Go
+> - [what is a singleton](https://www.hackingwithswift.com/example-code/language/what-is-a-singleton), Hacking With Swift
+> - [Swift singletons](https://matteomanferdini.com/swift-singleton/)

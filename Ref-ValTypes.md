@@ -10,6 +10,8 @@ When instances share the same copy of the data it creates a shared instance.
 ##### Mutability in reference types
 > reference types' properties can be mutated even declaring it as *let*. This is because when reference values are declared as constants, the reference must remain constant(can't change the instance) but you can mutate the instance.
 
+#### Classes 
+Example of classes are NSArray and its subclass; NSMutableArray. Whenever iterating over it and making changes, it will mutate the original one since it keeps a reference to it. Unlike typical arrays in Swift which are structs, looping through values and mutating it creates a copy of each value.
 
 
 ## Value Types
@@ -23,6 +25,9 @@ When capturing or storing value types, values are copied rather than referenced,
 ##### Mutability in value types
 > value types' declared as constants mean that the instance must remain constant no properties of the instance will ever change.
 
+#### Structs
+Structs are extremely fast compared to objects. An example would be an array of structs compared to an array of objects. The struct lives directly inside the array's memory. Whereas an array of objects contains just the references to the objects. And the compiler puts structs on the stack rather than a heap.\
+Structs have a single owner. Whereas if we pass a struct into a funtcion, the function recieves a copy of the struct and it can only change its own copy. This is called *value semantics*. Contrasting with objetcs which get passed by reference and can have many owners which is called *reference semantics*.
 
 ---
 ###### *resources*
