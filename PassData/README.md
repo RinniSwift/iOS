@@ -113,9 +113,61 @@ While it's easy to create and use singletons as a shared resource, it's global a
 
 
 ## Dependancy Injection
+
+> Dependancy injection is a mechanism where an object receives its dependancies from another, external object.
+
+Since dependancies are passed through other objects, the objects receiving dependancies (*client*) is isolated from impacting the dependancy implementation. Whereas the client can work with everything that supports the interface it expects.\
+Most dependancies are passed to the client in the initializer and does not change throughout the clients life cycle.
+
+#### Sample of creating a dependancy injection
+```swift
+
+struct Profile {
+
+    var name: String
+    var age: Int
+
+    init(name: String, age: Int) {
+        self.name = name
+        self.age = age
+    }
+}
+
+
+class ViewControllerA: UIViewController {
+
+    var profile: Profile?
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        profile = Profile(name: "Swift", age: 20)
+    }
+
+    func passData() {
+        let viewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "viewControllerB") as! ViewControllerB
+        viewController.profile = profile
+        self.present(viewController, animated: true, completion: nil)
+    }
+}
+
+
+class ViewControllerB: UIViewController {
+
+    var profile: Profile? = nil
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+    }
+}
+```
+
+In this example, `ViewControllerB` acts as the client and recieves it's dependancies(`Profile`) from `ViewControllerA` on instantiation. *ViewControllerA is injecting a Profile into ViewControllerB*. This makes it easy to understand that `ViewControllerB` depends on the `Profile`.
+
+
+
 ## Notification Center
 ## KVO
-## Instantiation / prepareForSegue
+## Instantiation / prepareForSegue / unwindSegue
 
 
 ---
