@@ -103,9 +103,16 @@ class ViewController: UIViewController {
     }
 }
 ```
-This allows you to create an instance of `ViewController` by calling `ViewController.shared`. Keep in mind that the `ViewDidLoad()` will only be called once no matter how many times you instantiate it because it will be the same object.
+This allows you to create an instance of `ViewController` by calling `ViewController.shared`. Keep in mind that the `ViewDidLoad()` will only be called once no matter how many times you instantiate it because it will be the same object.\
+\
+While it's easy to create and use singletons as a shared resource, it's global accesiblity can be harming in the following ways
+- Does not support *seperation of concern*. Singletons can be used anywhere across the app which makes it hard to keep track of when a seperation is changed.
+- Misuse of singletons. Without internal implementation of the singleton, developers can mistake this with assuming that instantiating it creates an isolated object.
+- Singletons carry state for the entirety of the application.
+- Hard to create tests for. Each sequence of method called on the singleton leads to the same internal state.
 
 
+## Dependancy Injection
 ## Notification Center
 ## KVO
 ## Instantiation / prepareForSegue
@@ -117,4 +124,4 @@ This allows you to create an instance of `ViewController` by calling `ViewContro
 > **Resources**:
 > - [delegates](https://medium.com/swift2go/when-i-say-delegate-you-say-what-54df1108ba58), Swift2Go
 > - [what is a singleton](https://www.hackingwithswift.com/example-code/language/what-is-a-singleton), Hacking With Swift
-> - [Swift singletons](https://matteomanferdini.com/swift-singleton/)
+> - [Swift singletons](https://matteomanferdini.com/swift-singleton/), Matteo Manferdini
