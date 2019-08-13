@@ -30,11 +30,14 @@ The main way centrals interact with peripherals are through exploring what data 
 
 ### Central, Peripherals, and Peripheral Data
 
+Once a peripheral connects with a central, the peripheral will stop advertising itself
+
 `CBCentralManager`\
 `CBPeripheral`, `CBPeripheralManager`\
-`CBService` and its subclass `CBMutableService` represents a peripherals service. Services can contain a number of characteristics and other references to other services.\
-`CBCharacteristic` and its subclass `CBMutableCharacteristic` represents further detail of a peripherals service. The properties of a characteristic determine how the value of the characteristic can be used and how the descriptors can be accessed.
+`CBService` and its subclass `CBMutableService` represents a peripherals service. Services can contain a number of characteristics and other references to other services. Each service distinguishes from another using unique number id called `UUID` which is either 16 bit or 128 bit.\
+`CBCharacteristic` and its subclass `CBMutableCharacteristic` represents further detail of a peripherals service. The properties of a characteristic determine how the value of the characteristic can be used and how the descriptors can be accessed. Each characteristic distinguishing from another using unique number id called `UUID` which is either 16 bit or 128 bit.
 
 
 > **Resources**:
 > - [Working with Core Bluetooth](https://www.appcoda.com/core-bluetooth/), App Coda
+> -[An Overview of Core Bluetooth Framework](https://mindbowser.com/core-bluetooth-framework/), Mind Bowser
