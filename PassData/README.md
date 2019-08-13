@@ -3,7 +3,7 @@
 View controllers contain a lot of information. And it would make sense for an app with many view controllers to have the same data. With some data in view controllers being inherited from others. There are multiple ways to do this as below.\
 There are multiple examples to this. Some are - Populating an information page based on what service users select, and - Displaying images on new view controller based on what users searched. Both these examples use some form of code reuse or inheritance. Let's see some ways we can create this using some following choices below.
 
-## Delegates
+## Delegates and protocols
 Also called as the delegation pattern. A high level would be where you create a protocol which will act as a collection of actions that any view controller can instantiate and access. Then different view controllers that want to have access to when the view controllers call the methods, can conform to the protocol and specify which view controllers they want to have access to from the protocol.\
 \
 Here are the steps to successfully set up the delegation pattern:
@@ -166,6 +166,19 @@ In this example, `ViewControllerB` acts as the client and recieves it's dependan
 
 
 ## Notification Center
+
+> The observing pattern to inform registered observers when a notification comes in, using a central dispatch called Notification Center.
+
+The Notification Center API is used to broadcast notifications whenever an action accurs. \
+NotificationCenter uses named notifications to identify what event is either observed or triggered.\
+Apple uses this for keyboard events.
+
+Downsides of Notification Center:
+- NotificationCenter is an obective-C API which makes the code fragile because of not being able to use generics to retain type safety.
+- Does not supporty seperation of concerns. Notifications are broadcasted app-wide. This is really convenient but makes relationships between objects loose.
+
+
+
 ## KVO
 ## Instantiation / prepareForSegue / unwindSegue
 
@@ -177,3 +190,4 @@ In this example, `ViewControllerB` acts as the client and recieves it's dependan
 > - [delegates](https://medium.com/swift2go/when-i-say-delegate-you-say-what-54df1108ba58), Swift2Go
 > - [what is a singleton](https://www.hackingwithswift.com/example-code/language/what-is-a-singleton), Hacking With Swift
 > - [Swift singletons](https://matteomanferdini.com/swift-singleton/), Matteo Manferdini
+> -[Observers in Swift - Part 1](https://www.swiftbysundell.com/posts/observers-in-swift-part-1), Swift by Sundell
