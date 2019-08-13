@@ -73,7 +73,7 @@
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*Closures*\
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*Instantiation / prepareForSegue*
 
-11. [CoreBluetooth](https://github.com/RinniSwift/iOS/blob/master/CoreBluetooth.md)
+11. [CoreBluetooth](https://github.com/RinniSwift/iOS/blob/master/CoreBluetooth.md)\
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*BLE devices*\
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*Centrals*\
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*Peripherals*\
