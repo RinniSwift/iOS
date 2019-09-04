@@ -79,3 +79,9 @@
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*Peripherals*\
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*Services*\
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*Characteristics*
+
+12. [Swift Keywords](https://github.com/RinniSwift/iOS/blob/master/Keywords.md)\
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*Import declarations*\
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*Constant, variable declarations*\
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*Stored variables, stored variable observers*\
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*Computed variables*
