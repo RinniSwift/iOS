@@ -84,4 +84,9 @@
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*Import declarations*\
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*Constant, variable declarations*\
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*Stored variables, stored variable observers*\
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*Computed variables*
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*Computed variables*\
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*Stored type properties*\
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*Computed type properties*\
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*Instance properties*\
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*Type Properties*\
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*Type alias declaration*\
