@@ -1,8 +1,6 @@
 # iOS Knowledge (Swift)
 *This repo contains a collection of Swift knowledge*
 
-### Use the find command (command+f) to search for keywords you want to study and click the readme link to read more on it.
-
 1. [Dictionary](https://github.com/RinniSwift/iOS/blob/master/Dictionary.md)\
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*dictionaries under the hood*\
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*hash tables, hash functions*\
