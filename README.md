@@ -87,4 +87,4 @@
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*Computed type properties*\
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*Instance properties*\
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*Type Properties*\
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*Type alias declaration*\
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*Type alias declaration*
